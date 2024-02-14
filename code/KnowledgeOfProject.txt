@@ -1,0 +1,111 @@
+1.
+first I download pyautogui by
+pip install pyautogui
+
+1.1. Basic function(Moving Mouse)
+->import pyautogui
+ first i import it
+->pyautogui.moveTo(50,40,duration=0)
+ It means 50 is x and to is y and for (50,40) mouse or cousor will start to move from 0 second
+->pyautogui.moveRel(20,80,duration=2)
+ It means upto 2 second cousor will move form (50,40) to (20,80)
+
+1.2. Clicking 
+->pyautogui.click(10,0,clicks=3,interval=0,button='left')
+ It use for click by mouse (10,0) is place where you mouse will click
+ clicks means hou much time you want to click. Here value is 3 so it click 3 times
+ interval means after how much time delay you want to click here value is 0 so delay time between clicks is 0
+ button means by which you want to click left or right
+
+1.3. Typing 
+->pyautogui.typewrite("i am learning")
+ it means where you cursor type typer is It will write "i am learning" at that place.
+
+1.4. Keyboard Actions:
+->pyautogui.press('enter')  # Presses a single key
+->pyautogui.hotkey('ctrl', 'a')  # Presses a combination of keys
+
+1.5. Screenshots:
+first download pillow 
+pip install pillow
+->screenshot = pyautogui.screenshot()
+->screenshot.save('screenshot.png')
+->screenshot.show()
+
+1.6. Waiting:(to sleep mouse)
+but below code is not woring, not error but I do not know
+# Get the current mouse position
+original_x, original_y = pyautogui.position()
+
+# Move the mouse to a specific location
+target_x, target_y = 500, 500
+pyautogui.moveTo(target_x, target_y)
+# Sleep for a certain period (e.g., 5 seconds)
+time.sleep(5)
+
+# Move the mouse back to its original position
+pyautogui.moveTo(original_x, original_y)
+
+
+2.
+
+download opencv
+pip install opencv-python
+
+2.1 : to import opencv-python
+import cb2
+
+2.2 : Loading and Displaying Images
+# Load an image
+image = cv2.imread('image.jpg')
+
+# Display the image
+cv2.imshow('Image', image)
+cv2.waitKey(5000)  # Wait indefinitely for a key press
+cv2.destroyAllWindows()  # Close all OpenCV windows
+
+2.3 Reading and Displaying Videos:
+# Open a video file
+video_capture = cv2.VideoCapture('video.mp4')
+
+while True:
+    ret, frame = video_capture.read()  # Read a frame from the video
+
+    if not ret:  # Break the loop if no frame is read
+        break
+
+    cv2.imshow('Video', frame)  # Display the frame
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):  # Break the loop when 'q' is pressed
+        break
+
+video_capture.release()  # Release the video capture object
+cv2.destroyAllWindows()  # Close all OpenCV windows
+
+2.4 Drawing Shapes and Text:
+# Draw a line
+cv2.line(image, (start_x, start_y), (end_x, end_y), (0, 255, 0), thickness=2)
+
+# Draw a rectangle
+cv2.rectangle(image, (top_left_x, top_left_y), (bottom_right_x, bottom_right_y), (0, 0, 255), thickness=2)
+
+# Draw a circle
+cv2.circle(image, (center_x, center_y), radius, (255, 0, 0), thickness=2)
+
+# Write text
+cv2.putText(image, 'Hello, OpenCV!', (x, y), cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, color=(0, 0, 255), thickness=2)
+
+
+import numpy as np
+import cv2
+
+# Create a black image (all zeros) of size 512x512
+img = np.zeros((512, 512, 3), np.uint8)
+
+# Draw a line from point (0,0) to (511,511) with color (blue in BGR format) and thickness 5
+cv2.line(img, (0, 0), (511, 511), (255, 0, 0), 5)
+
+# Display the image
+cv2.imshow('Line', img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
